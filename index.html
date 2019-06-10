@@ -207,11 +207,11 @@ opacity: 1;
 }
 .earthySweetWords {
 opacity: 0;      /*实先规定文字的状态是不显示的*/
-animation: fade-in 4s ease 0s 1;    /*调用名称为fade-in的动画，全程动画显示时间4S，进入方式为ease，延时0S进入，播放次数1次*/
--webkit-animation: fade-in 4s ease 0s 1;
--moz-animation: fade-in 4s ease 0s 1;
--o-animation: fade-in 4s ease 0s 1;
--ms-animation: fade-in 4s ease 0s 1;
+animation: fade-in 1s ease 0s 1;    /*调用名称为fade-in的动画，全程动画显示时间1S，进入方式为ease，延时0S进入，播放次数1次*/
+-webkit-animation: fade-in 1s ease 0s 1;
+-moz-animation: fade-in 1s ease 0s 1;
+-o-animation: fade-in 1s ease 0s 1;
+-ms-animation: fade-in 1s ease 0s 1;
 
 /*规定动画的最后状态为结束状态*/
 animation-fill-mode:forwards;
@@ -239,7 +239,7 @@ animation-fill-mode:forwards;
 </div>
 </div>
 <div class='earthySweet'>
-    <div>n 55lw ! n paau !</div>    
+    <div class='earthySweetWords'>n 55lw ! n paau !</div>    
 </div>
 </div>
 </body>
@@ -272,15 +272,26 @@ animation-fill-mode:forwards;
                        {'天冷了 有什么事到我被窝里说'},
                        {'我怀疑你的本质是英语书 不然为什么我越看越想睡'},
                        {'你闻到什么味道了吗 没有啊 为什么你一出来空气都是甜的'}]
-    earthySweet.map(item => {
+//     earthySweet.map(item => {
+//         $('.earthySweet').html('');
+//         setTimeout(function() {
+//             item.split(' ').map(obj => {
+//                 setTimeout(function() {
+//                     $('.earthySweet').append('<div class="earthySweetWords">obj</div>');
+//                 }, 500);
+//             });
+//         },1000);
+//     });
+    for(var i = 0; i < earthySweet.length; i ++) {
         $('.earthySweet').html('');
         setTimeout(function() {
-            item.split(' ').map(obj => {
+            var earthySweetWords = earthySweet[i].split(' ');
+            for(var j = 0; j < earthySweetWords.length; j ++) {
                 setTimeout(function() {
-                    $('.earthySweet').append('<div class="earthySweetWords">obj</div>');
+                    $('.earthySweet').append('<div class="earthySweetWords">earthySweetWords[j]</div>');
                 }, 500);
-            });
-        },1000);
-    });
+            }
+        },2000);
+    }
 </script>
 </html>
