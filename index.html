@@ -206,19 +206,29 @@ opacity: 1;
     box-shadow: 2px 2px 10px #CF2D28;
 }
 .earthySweetWords {
-opacity: 0;      /*实先规定文字的状态是不显示的*/
-animation: fade-in 1s ease 0s 1;    /*调用名称为fade-in的动画，全程动画显示时间1S，进入方式为ease，延时0S进入，播放次数1次*/
--webkit-animation: fade-in 1s ease 0s 1;
--moz-animation: fade-in 1s ease 0s 1;
--o-animation: fade-in 1s ease 0s 1;
--ms-animation: fade-in 1s ease 0s 1;
-
-/*规定动画的最后状态为结束状态*/
-animation-fill-mode:forwards;
--webkit-animation-fill-mode: forwards;  
-  -o-animation-fill-mode: forwards; 
-  -ms-animation-fill-mode: forwards;   
-  -moz-animation-fill-mode: forwards;
+-webkit-animation: earthySweet 4s linear 0s 1;
+}
+@-webkit-keyframes earthySweet {
+0% {
+	-webkit-transform: translate(0, 100px);
+	opacity: 0;
+}
+25% {
+	-webkit-transform: translate(0, 50px);
+	opacity: 0.5;
+}
+50% {
+	-webkit-transform: translate(0, 0);
+	opacity: 0.95;
+}
+75% {
+	-webkit-transform: translate(0, 0);
+	opacity: 1;
+}
+100% {
+	-webkit-transform: translate(0, 0);
+	opacity: 1;
+}
 }
 </style>
 </head>
@@ -245,53 +255,65 @@ animation-fill-mode:forwards;
 </body>
 <script type='text/javascript' src='jquery-3.4.1.js'></script>
 <script type='text/javascript'>
-    var earthySweet = [{'超人他们是正义联盟 钢铁侠是复仇者联盟 那我跟你是什么盟 海誓山盟！'},
-                       {'我心里有扇门 它很美好 你知道叫什么门吗 最好的我们'},
-                       {'每天想你3000遍'},
-                       {'我发现你长得像我妈的亲戚 哈？ 你长的像我妈的儿媳妇'},
-                       {'你为什么要害我 害你什么 害我喜欢你'},
-                       {'最近有谣言说我喜欢你 我要澄清一下 那不是谣言'},
-                       {'你知道你和星星的区别吗 星星在天上 你在我心里'},
-                       {'猜猜我的心在那边 左边？ 错了，在你那边'},
-                       {'从今以后我只能称呼你为您了 因为你在我心上'},
-                       {'游乐园那个，可以骑在上面的 有音乐的叫旋转什么 木马 mua~'},
-                       {'你知道我最喜欢吃什么吗 痴痴地望着你'},
-                       {'你知道这道菜怎么最好吃吗 趁热吗？ 我喂你吃'},
-                       {'我们来玩123木头人吧 好！我输了 因为我心动了'},
-                       {'跟你说一个坏消息 什么坏消息？ 我对你的思想已经不单纯了'},
-                       {'我喜欢你超过了两分钟 不能撤回了'},
-                       {'我生在北方 活在北方 栽倒你手里 总算去过不一样的地方'},
-                       {'我对你的爱就像拖拉机上山 轰轰烈烈~'},
-                       {'甜有100种方式，吃糖，蛋糕 还有每天98次的想你'},
-                       {'你上辈子一定是碳酸饮料吧 为什么我一看到你就开心的冒泡'},
-                       {'我还是喜欢你 像小时候吃辣条，不看日期'},
-                       {'我觉得你好像一款游戏 什么游戏 我的世界'},
-                       {'你的脸上有点东西 什么东西 有点漂亮！'},
-                       {'何以解忧 唯有抱...抱你'},
-                       {'和你聊天就像考试 事后想想总觉得没发挥好'},
-                       {'天冷了 有什么事到我被窝里说'},
-                       {'我怀疑你的本质是英语书 不然为什么我越看越想睡'},
-                       {'你闻到什么味道了吗 没有啊 为什么你一出来空气都是甜的'}]
-//     earthySweet.map(item => {
-//         $('.earthySweet').html('');
-//         setTimeout(function() {
-//             item.split(' ').map(obj => {
-//                 setTimeout(function() {
-//                     $('.earthySweet').append('<div class="earthySweetWords">obj</div>');
-//                 }, 500);
-//             });
-//         },1000);
-//     });
-    for(var i = 0; i < earthySweet.length; i ++) {
-        $('.earthySweet').html('');
+    var earthySweet = ['','超人他们是正义联盟 钢铁侠是复仇者联盟 那我跟你是什么盟 海誓山盟！',
+                       '我心里有扇门 它很美好 你知道叫什么门吗 最好的我们',
+                       '每天想你3000遍',
+                       '我发现你长得像我妈的亲戚 哈？ 你长的像我妈的儿媳妇',
+                       '你为什么要害我 害你什么 害我喜欢你',
+                       '最近有谣言说我喜欢你 我要澄清一下 那不是谣言',
+                       '你知道你和星星的区别吗 星星在天上 你在我心里',
+                       '猜猜我的心在那边 左边？ 错了，在你那边',
+                       '从今以后我只能称呼你为您了 因为你在我心上',
+                       '游乐园那个，可以骑在上面的 有音乐的叫旋转什么 木马 mua~',
+                       '你知道我最喜欢吃什么吗 痴痴地望着你',
+                       '你知道这道菜怎么最好吃吗 趁热吗？ 我喂你吃',
+                       '我们来玩123木头人吧 好！我输了 因为我心动了',
+                       '跟你说一个坏消息 什么坏消息？ 我对你的思想已经不单纯了',
+                       '我喜欢你超过了两分钟 不能撤回了',
+                       '我生在北方 活在北方 栽倒你手里 总算去过不一样的地方',
+                       '我对你的爱就像拖拉机上山 轰轰烈烈~',
+                       '甜有100种方式，吃糖，蛋糕 还有每天98次的想你',
+                       '你上辈子一定是碳酸饮料吧 为什么我一看到你就开心的冒泡',
+                       '我还是喜欢你 像小时候吃辣条，不看日期',
+                       '我觉得你好像一款游戏 什么游戏 我的世界',
+                       '你的脸上有点东西 什么东西 有点漂亮！',
+                       '何以解忧 唯有抱...抱你',
+                       '和你聊天就像考试 事后想想总觉得没发挥好',
+                       '天冷了 有什么事到我被窝里说',
+                       '我怀疑你的本质是英语书 不然为什么我越看越想睡',
+                       '你闻到什么味道了吗 没有啊 为什么你一出来空气都是甜的']
+   /* earthySweet.map(item => {
         setTimeout(function() {
-            var earthySweetWords = earthySweet[i].split(' ');
-            for(var j = 0; j < earthySweetWords.length; j ++) {
-                setTimeout(function() {
-                    $('.earthySweet').append('<div class="earthySweetWords">earthySweetWords[j]</div>');
-                }, 500);
-            }
-        },2000);
-    }
+		 $('.earthySweet').html('');
+             item.split(' ').map(obj => {
+             //   setTimeout(function() {
+                     $('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
+                // }, 500);
+             }, 500);
+         },1000);
+     }, 1000);*/
+var i = 0;
+var j = 0;
+setInterval(setText, 5000);
+function setText() { 
+	$('.earthySweet').empty();
+	var interval = setInterval(setTexts, 600);
+	function setTexts() { 
+		var obj = earthySweet[i].split(' ')[j]
+		console.log(earthySweet[i].split(' ')[j])
+		$('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
+		j++; 
+		if (j >= earthySweet[i].split(' ').length) { 
+			j = 0
+			clearInterval(interval)
+		} 
+	}
+	console.log(earthySweet[i])
+	i++; 
+	if (i >= earthySweet.length) { 
+		i = 0;
+	} 
+}
+
 </script>
 </html>
