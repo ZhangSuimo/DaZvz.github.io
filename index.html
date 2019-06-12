@@ -205,7 +205,14 @@ opacity: 1;
 .htve1,.htve2,.htve3,.htve4{
     box-shadow: 2px 2px 10px #CF2D28;
 }
+.earthySweet {
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
 .earthySweetWords {
+height: 35px;
+line-height: 35px;
 font-family: 'FZShuTi';
 font-size: 24px;
 -webkit-animation: earthySweet 4s linear 0s 1;
@@ -236,11 +243,50 @@ font-size: 24px;
 	opacity: 1;
 }
 }
+.sadNotes {
+	position: relative;
+	width: 100%;
+	height: 200px;
+	text-align: center;
+}
+
+.sadNoteList {
+	position: relative;
+	width: 220px;
+	height: 280px;
+	background-color: #f3e695;
+	color: #78767b;
+	margin: 0 auto;
+	padding-top: 30px;
+	-moz-box-shadow:5px 5px 5px #908960;
+	-webkit-box-shadow:5px 5px 5px #908960;
+	box-shadow:5px 5px 5px #908960;
+	-webkit-animation: sadNote 8s linear 0s infinite;
+}
+.sadNoteInfo {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+}
+@-webkit-keyframes sadNote {
+0% {
+	opacity: 0;
+}
+10% {
+	opacity: 1;
+}
+85% {
+	opacity: 1;
+}
+100% {
+	opacity: 0;
+}
+}
 </style>
 </head>
 <body>
 <div class='content'>
-<div class="all">
+<!--<div class="all">
 <div class="hto">
 <div class="htve1"></div>
 </div>
@@ -253,10 +299,16 @@ font-size: 24px;
 <div class="hto">
 <div class="htve4"></div>
 </div>
-</div>
+</div>-->
 <div class='earthySweet'>
     <div class='earthySweetWords'>n 55lw ! n paau !</div>    
 </div>
+<div class='sadNotes'>
+	<div class='sadNoteList'>
+		
+	</div>
+</div>
+
 </div>
 </body>
 <script type='text/javascript' src='jquery-3.4.1.js'></script>
@@ -316,40 +368,46 @@ font-size: 24px;
 			   '去他妈会哭的孩子有奶吃 老子不吃闲饭，不看冷脸',
 			   '我最讨厌的一种人就是擅长阿谀奉承 精通花言巧语的人 因为跟他们待在一起会显得老子很不懂做人',
 			   '温室的花朵需要保护 白手起家的孩子自寻出路'];
-   /* earthySweet.map(item => {
-        setTimeout(function() {
-		 $('.earthySweet').html('');
-             item.split(' ').map(obj => {
-             //   setTimeout(function() {
-                     $('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
-                // }, 500);
-             }, 500);
-         },1000);
-     }, 1000);*/
-var i = Math.round(Math.random() * 20);
-var j = 0;
-setInterval(setText, 7000);
-function setText() {
-	
-	console.log(i)
-	$('.earthySweet').empty();
-	var interval = setInterval(setTexts, 600);
-	function setTexts() { 
-		var obj = earthySweet[i].split(' ')[j]
-		console.log(earthySweet[i].split(' ')[j])
-		$('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
-		j++; 
-		if (j >= earthySweet[i].split(' ').length) { 
-			j = 0
-			clearInterval(interval)
+
+	var earthySweetNo = Math.round(Math.random() * 20);
+	var sadNotesNo = Math.round(Math.random() * 10);
+	var earthySweetInfoNo = 0;
+	setInterval(setEarthySweet, 7000);
+	setInterval(setSadNotes, 8000);
+	setSadNotes();
+	function setEarthySweet() {
+
+		console.log(earthySweetNo)
+		$('.earthySweet').empty();
+		var interval = setInterval(setTexts, 600);
+		function setTexts() { 
+			var obj = earthySweet[earthySweetNo].split(' ')[earthySweetInfoNo]
+			console.log(earthySweet[earthySweetNo].split(' ')[earthySweetInfoNo])
+			$('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
+			earthySweetInfoNo++; 
+			if (earthySweetInfoNo >= earthySweet[earthySweetNo].split(' ').length) { 
+				earthySweetInfoNo = 0
+				clearInterval(interval)
+			} 
+		}
+		console.log(earthySweet[earthySweetNo])
+		earthySweetNo++; 
+		if (earthySweetNo >= earthySweet.length) { 
+			earthySweetNo = 0;
 		} 
 	}
-	console.log(earthySweet[i])
-	i++; 
-	if (i >= earthySweet.length) { 
-		i = 0;
-	} 
-}
+	function setSadNotes() {
 
+		console.log(sadNotesNo)
+		$('.sadNoteList').empty();
+		sadNotes[sadNotesNo].split(' ').map(item => {
+			$('.sadNoteList').append('<div class="sadNoteInfo">' + item +'</div>');
+		});
+		console.log(sadNotes[sadNotesNo])
+		sadNotesNo++; 
+		if (sadNotesNo >= sadNotes.length-1) { 
+			sadNotesNo = 0;
+		} 
+	}
 </script>
 </html>
