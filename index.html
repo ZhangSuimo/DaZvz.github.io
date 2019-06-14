@@ -6,6 +6,7 @@
 <title>二月无眠夜如霜</title> 
 <link rel="stylesheet" href="./css/index.css" type="text/css" />
 <link rel="stylesheet" href="./css/animation.css" type="text/css" />
+<link rel="stylesheet" href="./css/swiper.min.css" type="text/css" />
 </head>
 <body>
 <div class='content'>
@@ -31,9 +32,35 @@
 		
 	</div>
 </div>
-
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    
+  </div>
+</div>
 </div>
 </body>
 <script type='text/javascript' src='./js/jquery-3.4.1.js'></script>
+<script type='text/javascript' src='./js/swiper.min.js'></script>
 <script type='text/javascript' src='./js/index.js'></script>
+<script language="javascript"> 
+
+    
+    var swiper = new Swiper('.swiper-container', {
+		effect: 'cube',
+		loop: true,
+		grabCursor: true,
+		slidesPerView :3,
+		autoplay: true,
+		cubeEffect: {
+			shadow: true,
+			slideShadows: true,
+			shadowOffset: 20,
+			shadowScale: 0.94,
+		},
+		
+    });
+  
+    
+
+</script>
 </html>
