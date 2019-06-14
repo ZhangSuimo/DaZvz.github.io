@@ -185,3 +185,4 @@ opacity: 1;
 100% {
 	-webkit-transform: translate(100px, -80px) rotate(30deg) skewX(20deg) scale(2);
 }
+}
