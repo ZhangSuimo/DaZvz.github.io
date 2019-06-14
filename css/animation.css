@@ -172,3 +172,16 @@ opacity: 1;
 	opacity: 0;
 }
 }
+@-webkit-keyframes sadNoteInfo {
+0% {
+	-webkit-transform: scale(2);
+}
+20% {
+	-webkit-transform: scale(1);
+}
+85% {
+	-webkit-transform: translate(0, 0) rotate(0deg) skewX(0deg) scale(1);
+}
+100% {
+	-webkit-transform: translate(100px, -80px) rotate(30deg) skewX(20deg) scale(2);
+}
