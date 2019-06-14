@@ -59,22 +59,15 @@ var laymanNotes = [
 	'我最讨厌的一种人就是擅长阿谀奉承 精通花言巧语的人 因为跟他们待在一起会显得老子很不懂做人',
 	'温室的花朵需要保护 白手起家的孩子自寻出路'
 ];
-/* earthySweet.map(item => {
-	setTimeout(function() {
-	 $('.earthySweet').html('');
-		 item.split(' ').map(obj => {
-		 //   setTimeout(function() {
-				 $('.earthySweet').append('<div class="earthySweetWords">' + obj +'</div>');
-			// }, 500);
-		 }, 500);
-	 },1000);
- }, 1000);*/
+var bgColor = ['-125deg, #57bdbf, #2f9de2', '-125deg, #ff7d7d, #fb2c95', '-113deg, #c543d8, #925cc3', '-141deg, #ecca1b, #f39526']
+
 var earthySweetNo = Math.round(Math.random() * 20);
 var sadNotesNo = Math.round(Math.random() * 10);
 var earthySweetInfoNo = 0;
 setInterval(setEarthySweet, 7000);
 setInterval(setSadNotes, 8000);
 setSadNotes();
+setLaymanNotes();
 function setEarthySweet() {
 	
 	console.log(earthySweetNo)
@@ -108,4 +101,18 @@ function setSadNotes() {
 	if (sadNotesNo >= sadNotes.length-1) { 
 		sadNotesNo = 0;
 	} 
+}
+function setLaymanNotes() {
+	var i = Math.round(Math.random() * 3);
+	$('.swiper-wrapper').empty();
+	laymanNotes.map((item, index) => {
+		$('.swiper-wrapper').append('<div class="swiper-slide" data-swiper-autoplay="5000" style="background: linear-gradient('+ bgColor[i] +')"><div class="swiperSlideList swipweList'+ index +'"></div></div>');
+		item.split(' ').map(obj => {
+			$('.swipweList'+ index).append('<div class="swiperSlideInfo">' + obj +'</div>');
+		})
+		i++;
+		if(i>3) {
+			i = 0;
+		}
+	})
 }
